@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Navbar(){
+const Navbar = () => {
     return (
         <div>
             <h3>My Nav</h3>
