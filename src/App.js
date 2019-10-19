@@ -11,7 +11,7 @@ function App() {
       <Navbar title="User App"/> 
       <h4 className="header">App Components</h4>
       <User name="Idris" surname="Shabanli" salary="5000"/>
-      <User name="Kenan" surname="Seyidov" salary="5000"/>
+      <User/>
     </div>
   );
 }

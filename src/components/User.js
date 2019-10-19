@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class User extends Component {
     render() {
@@ -14,6 +15,18 @@ class User extends Component {
             </div>
         )
     }
+}
+
+User.propTypes = {
+    name: PropTypes.string.isRequired,
+    surname: PropTypes.string.isRequired,
+    salary: PropTypes.number.isRequired
+}
+
+User.defaultProps= {
+    name: 'Melumat yoxdur',
+    surname: 'Melumat yoxdur',
+    salary: 'Melumat yoxdur'
 }
 
 export default User;
