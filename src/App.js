@@ -5,8 +5,7 @@ import User from "./components/User"
 function App() {
   return (
     <div>
-      <h4 style={{color:"blue", fontSize:"30px"}}>App Companents</h4>
-      <User/>
+      <h4 className="header">App Companents</h4>
     </div>
   );
 }
