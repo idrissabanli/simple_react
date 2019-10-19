@@ -1,11 +1,12 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import User from "./components/User"
+// import User from "./components/User"
 
 function App() {
   return (
-    <div>
-      <h4 className="header">App Companents</h4>
+    <div className="container">
+      <h4 className="header">App Components</h4>
     </div>
   );
 }
