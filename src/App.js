@@ -4,11 +4,8 @@ import User from "./components/User"
 
 function App() {
   return (
-    <div className="App">
-      <h4>App Companents</h4>
-      <User/>
-      <User/>
-      <User/>
+    <div>
+      <h4 style={{color:"blue", fontSize:"30px"}}>App Companents</h4>
       <User/>
     </div>
   );
