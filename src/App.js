@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navbar from './components/Navbar'
 import User from "./components/User"
@@ -11,7 +10,7 @@ function App() {
       <Navbar title="User App"/> 
       <h4 className="header">App Components</h4>
       <User name="Idris" surname="Shabanli" salary="5000"/>
-      <User/>
+      <User name="Kenan" surname="Seyidov"/>
     </div>
   );
 }
