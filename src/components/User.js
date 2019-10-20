@@ -11,17 +11,17 @@ class User extends Component {
         salary: 'Melumat yoxdur'
     }
 
-    onClickEvent(e){
+    onClickEvent = (e) =>{
         console.log(e.target);
         console.log('test');
         console.log('binded this');
         console.log(this);
     }
 
-    constructor(props){
-        super(props)
-        this.onClickEvent = this.onClickEvent.bind(this);
-    }
+    // constructor(props){
+    //     super(props)
+    //     this.onClickEvent = this.onClickEvent.bind(this);
+    // }
 
     // constructor(props){
     //     super(props)
