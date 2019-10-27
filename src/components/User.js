@@ -15,7 +15,7 @@ class User extends Component {
         console.log(e.target);
         console.log('test');
         console.log('binded this');
-        console.log(this);
+        console.log(this); // bind-siz User class-ni vermir undefined verir
         console.log(number);
     }
 
