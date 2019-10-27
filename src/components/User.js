@@ -14,8 +14,12 @@ class User extends Component {
     onClickEvent = (e) =>{
        // Change isVisible state 
        this.setState({
-           isVisible: !this.state.isVisible,
+           isVisible: !this.state.isVisible, 
        });
+    };
+    onDeleteUser = (e) => {
+        const {id, deleteUser} = this.props;
+        deleteUser(id);
     }
 
     // constructor(props){
@@ -38,7 +42,7 @@ class User extends Component {
                 <div className="card">
                     <div className="card-header d-flex justify-content-between">
                         <h4 className="d-inline" onClick={this.onClickEvent}>{name}</h4>
-                        <i className="fa fa-spinner fa-spin" style={{cursor:"pointer"}}></i>
+                        <i onClick={this.onDeleteUser} className="fa fa-spinner fa-spin" style={{cursor:"pointer"}}></i>
                     </div>
                     {
                         isVisible ? <div className="card-body">
@@ -57,7 +61,8 @@ class User extends Component {
 User.propTypes = {
     name: PropTypes.string.isRequired,
     surname: PropTypes.string.isRequired,
-    salary: PropTypes.string.isRequired
+    salary: PropTypes.string.isRequired,
+    deleteUser: PropTypes.func.isRequired,
 }
 
 // User.defaultProps= {

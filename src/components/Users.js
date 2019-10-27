@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import User from './User'
+import React, { Component } from 'react';
+import User from './User';
+import PropTypes from 'prop-types';
 
 class Users extends Component {
     render() {
-        const {users} = this.props;
+        const {users, deleteUser} = this.props;
         console.log(users);
         return (
             <div>
@@ -12,7 +13,12 @@ class Users extends Component {
                     return (
                         <User 
                         key = {user.id} //vermeliyik ki, unique etsin companentleri
-                        name={user.name} surname= {user.surname} salary={user.salary}/>
+                        id={user.id} 
+                        name={user.name} 
+                        surname= {user.surname} 
+                        salary={user.salary}
+                        deleteUser = {deleteUser}
+                        />
                     );
                 })
             }
@@ -20,5 +26,9 @@ class Users extends Component {
             </div>
         )
     }
+}
+Users.propTypes = {
+    users: PropTypes.array.isRequired,
+    deleteUser: PropTypes.func.isRequired,
 }
 export default Users;
