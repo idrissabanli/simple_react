@@ -18,8 +18,7 @@ class User extends Component {
        });
     };
     onDeleteUser = (e) => {
-        const {id, deleteUser} = this.props;
-        deleteUser(id);
+        //const {id} = this.props; 
     }
 
     // constructor(props){
@@ -62,7 +61,6 @@ User.propTypes = {
     name: PropTypes.string.isRequired,
     surname: PropTypes.string.isRequired,
     salary: PropTypes.string.isRequired,
-    deleteUser: PropTypes.func.isRequired,
 }
 
 // User.defaultProps= {
