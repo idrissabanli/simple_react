@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import UserConsumer from '../context';
 
 class User extends Component {
     state = {
@@ -17,8 +18,9 @@ class User extends Component {
            isVisible: !this.state.isVisible, 
        });
     };
-    onDeleteUser = (e) => {
-        //const {id} = this.props; 
+    onDeleteUser = (dispatch, e) => {
+        const {id} = this.props;
+        dispatch({type: "DELETE_USER", payload:id})
     }
 
     // constructor(props){
@@ -37,22 +39,31 @@ class User extends Component {
         const {name, surname, salary} = this.props;
         const {isVisible} = this.state;
         return (
-            <div className="col-md-8 mb-4">
-                <div className="card">
-                    <div className="card-header d-flex justify-content-between">
-                        <h4 className="d-inline" onClick={this.onClickEvent}>{name}</h4>
-                        <i onClick={this.onDeleteUser} className="fa fa-spinner fa-spin" style={{cursor:"pointer"}}></i>
-                    </div>
-                    {
-                        isVisible ? <div className="card-body">
-                        <p className="card-text">Soyad: {surname}</p>
-                        <p className="card-text">Maas: {salary}</p>
-                       
-                        </div>: null
+            <UserConsumer>
+            {
+                value => {
+                    const {dispatch} = value;
+                    return (
+                        <div className="col-md-8 mb-4">
+                            <div className="card">
+                                <div className="card-header d-flex justify-content-between">
+                                    <h4 className="d-inline" onClick={this.onClickEvent}>{name}</h4>
+                                    <i onClick={this.onDeleteUser.bind(this, dispatch)} className="fa fa-spinner fa-spin" style={{cursor:"pointer"}}></i>
+                                </div>
+                                {
+                                    isVisible ? <div className="card-body">
+                                    <p className="card-text">Soyad: {surname}</p>
+                                    <p className="card-text">Maas: {salary}</p>
+                                
+                                    </div>: null
+                                }
+                                
+                            </div>
+                        </div>
+                    )
                     }
-                    
-                </div>
-            </div>
+                }
+            </UserConsumer>
         )
     }
 }
