@@ -10,6 +10,14 @@ const reducer = (state, action) => {
                 ...state,
                 users: state.users.filter(user=>action.payload !== user.id),
             };
+        case "ADD_USER": 
+            return {
+                ...state,
+                id: action.payload.id,
+                name: action.payload.name,
+                surname: action.payload.surname,
+                salary: action.payload.salary,
+            };  
         default:
             return state;
     }
