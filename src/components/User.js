@@ -69,6 +69,7 @@ class User extends Component {
 }
 
 User.propTypes = {
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     surname: PropTypes.string.isRequired,
     salary: PropTypes.string.isRequired,

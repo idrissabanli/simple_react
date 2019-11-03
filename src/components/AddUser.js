@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import posed from 'react-pose';
+import UserConsumer from '../context'
 
+var uniqid = require('uniqid');
 
 const Box = posed.div({
     visible:{
@@ -30,22 +32,29 @@ export default class AddUser extends Component {
             visible: !this.state.visible,
         })
     }
-    // changeName = (e) =>{
-    //     this.setState({
-    //         name: e.target.value
-    //     });
-    // }
-    // changeSurname = (e) =>{
-    //     this.setState({
-    //         surname: e.target.value
-    //     });
-    // }
-    // changeSalary = (e) =>{
-    //     this.setState({
-    //         salary: e.target.value
-    //     });
-    // }
+    
+    addUser = (dispatch, e) =>{
+        e.preventDefault();
+        const {name, surname, salary} = this.state;
 
+        const newUser = {
+            id: uniqid(),
+            name,
+            salary,
+            surname,
+        }
+        /* if propery and variable name is same
+        name --> name:name,
+        salary --> salary:salary,
+        surname --> surname:surname,
+        */
+       dispatch({type:"ADD_USER", payload: newUser})
+       this.setState({
+           name: "",
+           surname: "",
+           salary: "",
+       })
+    }
     changeInput = (e) => {
         this.setState({
             // I = input name property,  II = input value
@@ -56,38 +65,46 @@ export default class AddUser extends Component {
     render() {
         const {visible, name, surname, salary} = this.state;
         return (
-            <div className="col-md-8 mb-4">
-                <button onClick={this.changeVisibility } className="btn btn-dark btn-block mb-2">{ visible ? "Hide Form": "Show Form"}</button>
-                <Box pose = { visible ? "visible": "hidden"}>
-                <div className="card" >
-                    <div className="card-header">
-                        <h4>Add User Form</h4>
+            <UserConsumer>
+            {
+                value => {
+                    const {dispatch} = value;
+                    return (<div className="col-md-8 mb-4">
+                    <button onClick={this.changeVisibility } className="btn btn-dark btn-block mb-2">{ visible ? "Hide Form": "Show Form"}</button>
+                    <Box pose = { visible ? "visible": "hidden"}>
+                    <div className="card" >
+                        <div className="card-header">
+                            <h4>Add User Form</h4>
+                        </div>
+                        <div className="card-body">
+                            <form onSubmit={this.addUser.bind(this, dispatch)}>
+                                <div className="form-group">
+                                    <label htmlFor="name">Name</label>
+                                    <input className="form-control" name="name" id="name" type="text" value ={name} placeholder="Enter name"
+                                    onChange ={ this.changeInput}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="surname">Surname</label>
+                                    <input className="form-control" name="surname" id="surname"  value ={surname} type="text" placeholder="Enter surname"
+                                    onChange ={ this.changeInput}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="salary">Salary</label>
+                                    <input className="form-control" name="salary" id="salary" type="text"  value ={salary} placeholder="Enter salary"
+                                    onChange ={ this.changeInput}/>
+                                </div>
+                                <button className="btn btn-danger btn-block" type="submit">Save</button>
+                            </form>
+                        </div>
                     </div>
-                    <div className="card-body">
-                        <form>
-                            <div className="form-group">
-                                <label htmlFor="name">Name</label>
-                                <input className="form-control" name="name" id="name" type="text" value ={name} placeholder="Enter name"
-                                onChange ={ this.changeInput}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="surname">Surname</label>
-                                <input className="form-control" name="surname" id="surname"  value ={surname} type="text" placeholder="Enter surname"
-                                onChange ={ this.changeInput}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="salary">Salary</label>
-                                <input className="form-control" name="salary" id="salary" type="text"  value ={salary} placeholder="Enter salary"
-                                onChange ={ this.changeInput}/>
-                            </div>
-                            <button className="btn btn-danger btn-block" type="submit">Save</button>
-                        </form>
-                    </div>
-                </div>
-                </Box>
-            </div>
+                    </Box>
+                </div>)
+                }
+            }
+            
+            </UserConsumer>
         )
     }
 }
