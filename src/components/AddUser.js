@@ -21,14 +21,32 @@ export default class AddUser extends Component {
 
     state = {
         visible: false,
+        name: "",
+        surname: "",
+        salary: "", 
     }
     changeVisibility  = (e) => {
         this.setState({
             visible: !this.state.visible,
         })
     }
+    changeName = (e) =>{
+        this.setState({
+            name: e.target.value
+        });
+    }
+    changeSurname = (e) =>{
+        this.setState({
+            surname: e.target.value
+        });
+    }
+    changeSalary = (e) =>{
+        this.setState({
+            salary: e.target.value
+        });
+    }
     render() {
-        const {visible} = this.state;
+        const {visible, name, surname, salary} = this.state;
         return (
             <div className="col-md-8 mb-4">
                 <button onClick={this.changeVisibility } className="btn btn-dark btn-block mb-2">{ visible ? "Hide Form": "Show Form"}</button>
@@ -41,15 +59,20 @@ export default class AddUser extends Component {
                         <form>
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
-                                <input className="form-control" name="name" id="name" type="text" placeholder="Enter name"/>
+                                <input className="form-control" name="name" id="name" type="text" value ={name} placeholder="Enter name"
+                                onChange ={ this.changeName}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="surname">Surname</label>
-                                <input className="form-control" name="surname" id="surname" type="text" placeholder="Enter surname"/>
+                                <input className="form-control" name="surname" id="surname"  value ={surname} type="text" placeholder="Enter surname"
+                                onChange ={ this.changeSurname}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="salary">Salary</label>
-                                <input className="form-control" name="salary" id="salary" type="text" placeholder="Enter salary"/>
+                                <input className="form-control" name="salary" id="salary" type="text"  value ={salary} placeholder="Enter salary"
+                                onChange ={ this.changeSalary}/>
                             </div>
                             <button className="btn btn-danger btn-block" type="submit">Save</button>
                         </form>
