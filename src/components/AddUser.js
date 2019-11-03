@@ -30,21 +30,29 @@ export default class AddUser extends Component {
             visible: !this.state.visible,
         })
     }
-    changeName = (e) =>{
+    // changeName = (e) =>{
+    //     this.setState({
+    //         name: e.target.value
+    //     });
+    // }
+    // changeSurname = (e) =>{
+    //     this.setState({
+    //         surname: e.target.value
+    //     });
+    // }
+    // changeSalary = (e) =>{
+    //     this.setState({
+    //         salary: e.target.value
+    //     });
+    // }
+
+    changeInput = (e) => {
         this.setState({
-            name: e.target.value
-        });
+            // I = input name property,  II = input value
+            [e.target.name]: e.target.value
+        })
     }
-    changeSurname = (e) =>{
-        this.setState({
-            surname: e.target.value
-        });
-    }
-    changeSalary = (e) =>{
-        this.setState({
-            salary: e.target.value
-        });
-    }
+
     render() {
         const {visible, name, surname, salary} = this.state;
         return (
@@ -60,19 +68,19 @@ export default class AddUser extends Component {
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
                                 <input className="form-control" name="name" id="name" type="text" value ={name} placeholder="Enter name"
-                                onChange ={ this.changeName}
+                                onChange ={ this.changeInput}
                                 />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="surname">Surname</label>
                                 <input className="form-control" name="surname" id="surname"  value ={surname} type="text" placeholder="Enter surname"
-                                onChange ={ this.changeSurname}
+                                onChange ={ this.changeInput}
                                 />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="salary">Salary</label>
                                 <input className="form-control" name="salary" id="salary" type="text"  value ={salary} placeholder="Enter salary"
-                                onChange ={ this.changeSalary}/>
+                                onChange ={ this.changeInput}/>
                             </div>
                             <button className="btn btn-danger btn-block" type="submit">Save</button>
                         </form>
