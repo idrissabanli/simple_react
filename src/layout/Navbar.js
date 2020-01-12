@@ -10,6 +10,7 @@ function Navbar(props){
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/add">Add User</Link></li>
+                <li><Link to="/contribute">Project</Link></li>
             
             </ul>
             <hr/>

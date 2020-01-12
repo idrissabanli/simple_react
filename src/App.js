@@ -1,21 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+import Navbar from './layout/Navbar';
 import Users from "./components/Users";
 import AddUser from './components/AddUser';
-import NotFound from './components/NotFound';
+import NotFound from './pages/NotFound';
+import Contribute from './pages/Contribute';
 // import Test from './components/Test'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
-
-const Home =  () => {
-  return <h3>Home Page</h3>
-}
-
-const About =  () => {
-  return <h3>About Page</h3>
-}
-
 
 class App extends Component{
   // <Navbar title="User App"/> 
@@ -34,6 +25,7 @@ class App extends Component{
     <Switch>
       <Route exact path= "/" component={Users}/>
       <Route exact path= "/add" component={AddUser}/>
+      <Route exact path= "/contribute" component={Contribute}/>
       <Route component={NotFound}/>
 
     </Switch>
