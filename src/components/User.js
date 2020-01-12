@@ -11,6 +11,10 @@ class User extends Component {
         surname: 'Melumat yoxdur',
         salary: 'Melumat yoxdur'
     }
+    componentWillUnmount() {
+        console.log("componentWillUnmount");
+    }
+    
 
     onClickEvent = (e) =>{
        // Change isVisible state 
