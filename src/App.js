@@ -28,9 +28,10 @@ class App extends Component{
     <div className="container">
   {/* User App Navbar function-unu icine gedir */}
     {/*  <Test test="deneme"/> */}
-    <Route exact path= "/" component={Home}/>
+    <Route exact path= "/" component={Users}/>
+    <Route exact path= "/add" component={AddUser}/>
 
-    <Route path= "/about" component={About}/>
+    
       
     </div>
     </Router>
