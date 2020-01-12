@@ -3,8 +3,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Users from "./components/Users";
 import AddUser from './components/AddUser';
+import NotFound from './components/NotFound';
 // import Test from './components/Test'
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 const Home =  () => {
@@ -28,9 +29,14 @@ class App extends Component{
     <div className="container">
   {/* User App Navbar function-unu icine gedir */}
     {/*  <Test test="deneme"/> */}
-    <Route exact path= "/" component={Users}/>
-    <Route exact path= "/add" component={AddUser}/>
+    <Navbar title="User App"/> 
+    
+    <Switch>
+      <Route exact path= "/" component={Users}/>
+      <Route exact path= "/add" component={AddUser}/>
+      <Route component={NotFound}/>
 
+    </Switch>
     
       
     </div>
