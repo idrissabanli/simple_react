@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import Navbar from './layout/Navbar';
 import Users from "./components/Users";
-import AddUser from './components/AddUser';
+import AddUser from './forms/AddUser';
+import UpdateUser from './forms/UpdateUser';
 import NotFound from './pages/NotFound';
 import Contribute from './pages/Contribute';
 // import Test from './components/Test'
@@ -25,6 +26,7 @@ class App extends Component{
     <Switch>
       <Route exact path= "/" component={Users}/>
       <Route exact path= "/add" component={AddUser}/>
+      <Route exact path= "/edit/:id" component={UpdateUser}/>
       <Route exact path= "/contribute" component={Contribute}/>
       <Route component={NotFound}/>
 

@@ -51,7 +51,8 @@ export default class AddUser extends Component {
 
         const response = await axios.post('http://localhost:3004/users', newUser)
 
-       dispatch({type:"ADD_USER", payload: response.data})
+       dispatch({type:"ADD_USER", payload: response.data});
+       this.props.history.push('/');
        this.setState({
            name: "",
            surname: "",
